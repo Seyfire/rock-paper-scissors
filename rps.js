@@ -57,7 +57,7 @@ function getHumanChoice() {
     return humanChoice;
 }
 function playRound (humanChoice, computerChoice) {
-    // plays a single round of RPS
+    // plays a single round of RPS, logs result of round to console
 
     //print message showing what each player picked
     console.log(
