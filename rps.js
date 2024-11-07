@@ -19,8 +19,6 @@ function getComputerChoice () {
         case 2:
             choice = "scissors";
             break;
-        default:
-            console.log("Invalid Number");        
     }
 
     return choice;
@@ -56,6 +54,7 @@ function getHumanChoice() {
 
     return humanChoice;
 }
+
 function playRound (humanChoice, computerChoice) {
     // plays a single round of RPS, logs result of round to console
 
@@ -99,5 +98,3 @@ function checkWinner (humanChoice, computerChoice) {
 
 let humanScore = 0;
 let computerScore = 0;
-
-playGame();
