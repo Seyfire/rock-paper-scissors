@@ -97,34 +97,6 @@ function checkWinner (humanChoice, computerChoice) {
     }
 }
 
-function playGame () {
-    //plays 5 rounds of RPS
-
-    // set round number to 0
-    let roundNum = 0;
-
-    // play 5 rounds
-    while (roundNum < 5) {
-        // get new selections
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        // play a round
-        playRound(humanSelection, computerSelection);
-        // increment round number by 1
-        roundNum = roundNum + 1;
-    }
-
-    // compare human vs computer score, log result to console
-    if (humanScore > computerScore) {
-        console.log("Congrats, you won the game!");
-    } else if (humanScore == computerScore) {
-        console.log("Wow! A tie game");
-    } else {
-        console.log("Sorry, you lost the game.");
-    }
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
