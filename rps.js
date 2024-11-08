@@ -72,7 +72,7 @@ let computerScore = 0;
 let selectionButtons = document.querySelectorAll(".human-selection");
 console.log(selectionButtons);
 selectionButtons.forEach(function(btn){
-    const humanSelection = btn.textContent;
+    const humanSelection = btn.textContent.toLowerCase();
     console.log(humanSelection);
     btn.addEventListener("click", function() {
         playRound(humanSelection, getComputerChoice())
