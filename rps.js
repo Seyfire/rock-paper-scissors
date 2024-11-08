@@ -24,37 +24,6 @@ function getComputerChoice () {
     return choice;
 }
 
-function getHumanChoice() {
-    // returns string "rock", "paper", or "scissors" based on user input
-
-    // create empty int variable
-    let num = 0;
-
-    // ask user to input 1, 2, or 3
-    // parse to int & store it in var
-    num = parseInt(prompt("Enter 1 for Rock, 2 for Paper, and 3 for Scissors"));
-
-    // init empty string variable
-    let humanChoice = "";
-
-    // use input num to assign corresponding string to var
-    switch (num) {
-        case 1:
-            humanChoice = "rock";
-            break;
-        case 2:
-            humanChoice = "paper";
-            break;
-        case 3:
-            humanChoice = "scissors";
-            break;
-        default:
-            console.log("Invalid Number");        
-    }
-
-    return humanChoice;
-}
-
 function playRound (humanChoice, computerChoice) {
     // plays a single round of RPS, logs result of round to console
 
@@ -98,3 +67,14 @@ function checkWinner (humanChoice, computerChoice) {
 
 let humanScore = 0;
 let computerScore = 0;
+
+// add eventListener to button selections
+let selectionButtons = document.querySelectorAll(".human-selection");
+console.log(selectionButtons);
+selectionButtons.forEach(function(btn){
+    const humanSelection = btn.textContent;
+    console.log(humanSelection);
+    btn.addEventListener("click", function() {
+        playRound(humanSelection, getComputerChoice())
+    });
+});
