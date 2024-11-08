@@ -27,27 +27,30 @@ function getComputerChoice () {
 function playRound (humanChoice, computerChoice) {
     // plays a single round of RPS, logs result of round to console
 
-    //print message showing what each player picked
-    console.log(
-        "You picked: " + humanChoice + ".\nThe computer picked: "
-        + computerChoice + ".\n"
-    )
+    // display what each player picked
+    roundSummary.textContent = `You picked ${humanChoice}, and the computer picked ${computerChoice}`; 
 
-    // compare human vs computer choice, and store outcome in var
     const outcome = checkWinner(humanChoice, computerChoice);
+
     // print message and increment score based on outcome of round
     switch (outcome) {
         case 2:
-            console.log("Tie game!\n");
+            // tie game
+            roundResult.textContent = "Draw"
             break;
         case 1:
-            console.log("You Win!\n");
-            humanScore = humanScore + 1;
+            // human wins
+            roundResult.textContent = "You won"
+            humanScore += 1;
             break;
         case 0:
-            console.log("You lost :(\n");
-            computerScore = computerScore + 1;
+            // computer wins
+            roundResult.textContent = "You lost"
+            computerScore += 1;
     }
+
+    //update score
+    currentScore.textContent = `The score is: ${humanScore} - ${computerScore}`;
 }
 
 function checkWinner (humanChoice, computerChoice) {
@@ -65,9 +68,6 @@ function checkWinner (humanChoice, computerChoice) {
     }
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
 // add eventListener to button selections
 let selectionButtons = document.querySelectorAll(".human-selection");
 console.log(selectionButtons);
@@ -77,3 +77,12 @@ selectionButtons.forEach(function(btn){
         playRound(humanSelection, getComputerChoice())
     });
 });
+
+// store result elements into variables
+let roundSummary = document.querySelector(".round-summary");
+let roundResult = document.querySelector(".result-round");
+let currentScore = document.querySelector(".score");
+let gameResult = document.querySelector(".result-game");
+
+let humanScore = 0;
+let computerScore = 0;
