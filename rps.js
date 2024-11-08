@@ -27,12 +27,17 @@ function getComputerChoice () {
 function playRound (humanChoice, computerChoice) {
     // plays a single round of RPS, logs result of round to console
 
+    
+    if ( (humanScore < 5) || (computerScore < 5) ) {
+        gameResult.textContent = ""
+    }
+
     // display what each player picked
     roundSummary.textContent = `You picked ${humanChoice}, and the computer picked ${computerChoice}`; 
 
     const outcome = checkWinner(humanChoice, computerChoice);
 
-    // print message and increment score based on outcome of round
+    // display round winner and increment score based on outcome of round
     switch (outcome) {
         case 2:
             // tie game
@@ -49,8 +54,13 @@ function playRound (humanChoice, computerChoice) {
             computerScore += 1;
     }
 
-    //update score
+    // update score
     currentScore.textContent = `The score is: ${humanScore} - ${computerScore}`;
+
+    // end game & display winner if a score reaches 5
+    if ( (humanScore >= 5) || (computerScore >= 5) ) {
+        endGame();
+    }
 }
 
 function checkWinner (humanChoice, computerChoice) {
@@ -68,9 +78,19 @@ function checkWinner (humanChoice, computerChoice) {
     }
 }
 
+function endGame () {
+    // displays the winner, and resets the scores
+    if ( humanScore > computerScore) {
+        gameResult.textContent = "CONGRATULATIONS, YOU WON THE GAME";
+    } else {
+        gameResult.textContent = "YOU LOST THE GAME, BETTER LUCK NEXT TIME";
+    }
+    humanScore = 0;
+    computerScore = 0;
+}
+
 // add eventListener to button selections
 let selectionButtons = document.querySelectorAll(".human-selection");
-console.log(selectionButtons);
 selectionButtons.forEach(function(btn){
     const humanSelection = btn.textContent.toLowerCase();
     btn.addEventListener("click", function() {
